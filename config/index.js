@@ -1,5 +1,6 @@
 const path      = require('path');
 const winston   = require('winston');
+require('dotenv').config();
 
 /**
  * This is the default application configuration. If you switch your environment by setting NODE_ENV environment
@@ -57,7 +58,7 @@ module.exports = {
      */
     database: {
 
-        /**
+        /**s_
          * The default database connection.
          */
         defaultConnection: 'app',
@@ -72,6 +73,16 @@ module.exports = {
                 useNullAsDefault: true,
                 connection: {
                     filename: path.resolve(__dirname + "/../resources/storage/db.sqlite")
+                }
+            },
+            readonlyDB: {
+                client: 'pg',
+                connection: {
+                    charset  : 'utf8',
+                    host : process.env.POSTGRES_HOST,
+                    user : process.env.POSTGRES_USER,
+                    password : process.env.POSTGRES_PASSWORD,
+                    database : process.env.POSTGRES_DB
                 }
             }
         }

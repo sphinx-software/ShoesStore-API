@@ -7,6 +7,7 @@
     "prod": "NODE_ENV=production node build/app.js",
     "start": "NODE_ENV=local nodemon --exec babel-node --watch src --watch config --watch resources/locales --watch resources/views --ext js,njk.html src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "seed:run": "node node_modules/.bin/knex seed:run",
     "build": "babel src -d build"
   },
   "repository": {
@@ -23,10 +24,13 @@
     "@fusion.io/framework": "^1.4.0",
     "chalk": "^2.4.2",
     "cli-progress": "^2.1.1",
+    "dotenv": "^8.0.0",
+    "knex": "^0.19.0",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "ouch": "^2.0.0",
+    "pg": "^7.11.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
