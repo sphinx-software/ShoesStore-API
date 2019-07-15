@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/fusion-io/fusion#readme",
   "dependencies": {
-    "@fusion.io/framework": "^1.5.8",
+    "@fusion.io/framework": "^1.5.11",
     "chalk": "^2.4.2",
     "cli-progress": "^2.1.1",
     "dotenv": "^8.0.0",

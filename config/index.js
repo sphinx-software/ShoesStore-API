@@ -61,7 +61,7 @@ module.exports = {
         /**s_
          * The default database connection.
          */
-        defaultConnection: 'app',
+        defaultConnection: 'shoesStore',
 
         /**
          * The list of the database connections
@@ -75,7 +75,7 @@ module.exports = {
                     filename: path.resolve(__dirname + "/../resources/storage/db.sqlite")
                 }
             },
-            readonlyDB: {
+            shoesStore: {
                 client: 'pg',
                 connection: {
                     charset  : 'utf8',
