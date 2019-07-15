@@ -10,6 +10,7 @@ import {
 
 import HelloWorldController from "./Controllers/HelloWorldController";
 import WelcomeMesssage from "../HAL/WelcomeMesssage";
+import ProductController from "../Product/ProductController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -34,7 +35,7 @@ export default class HttpServiceProvider extends FrameworkProvider {
     /**
      * This is a universal place for grouping your middlewares
      * into a logical unit. So you can re-use it in several places.
-     *
+     *messages
      * @return {{api: Array, web: *[]}}
      */
     middlewareGroups() {
@@ -75,8 +76,11 @@ export default class HttpServiceProvider extends FrameworkProvider {
      * @param router
      */
     apiRouting(router) {
-        router.get('messages.welcome', '/messages/:id', async ctx => {
-            await ctx.render(WelcomeMesssage, {message: 'Hello world', from: "Shoes store", id: ctx.params.id})
-        });
+        router
+            .get('messages.welcome', '/messages/:id', async ctx => {
+                await ctx.render(WelcomeMesssage, {message: 'Hello world', from: "Shoes store", id: ctx.params.id})
+            })
+            .controller(ProductController)
+        ;
     }
 }

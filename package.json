@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "prod": "NODE_ENV=production node build/app.js",
-    "start": "NODE_ENV=local nodemon --exec babel-node --watch src --watch config --watch resources/locales --watch resources/views --ext js,njk.html src/app.js",
+    "start": "nodemon --exec babel-node --watch src --watch config --watch resources/locales --watch resources/views --ext js,njk.html src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed:run": "node node_modules/.bin/knex seed:run",
     "build": "babel src -d build"
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/fusion-io/fusion#readme",
   "dependencies": {
-    "@fusion.io/framework": "^1.5.11",
+    "@fusion.io/framework": "^1.5.12",
     "chalk": "^2.4.2",
     "cli-progress": "^2.1.1",
     "dotenv": "^8.0.0",
