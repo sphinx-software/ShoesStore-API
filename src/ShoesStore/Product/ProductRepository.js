@@ -5,7 +5,7 @@ import Product from "./Product";
 @singleton(Database)
 export default class ProductRepository {
     constructor(dbm) {
-        this.dbm = dbm;
+        this.dbm = dbm;``
     }
 
     async get(productId) {

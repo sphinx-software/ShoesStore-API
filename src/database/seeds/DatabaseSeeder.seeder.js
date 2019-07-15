@@ -1,5 +1,5 @@
 import {inject} from "@fusion.io/framework";
-import ProductSeeder from "../../Product/ProductSeeder.seeder";
+import ProductSeeder from "../../ShoesStore/Product/ProductSeeder.seeder";
 
 export default class DatabaseSeeder {
 

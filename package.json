@@ -22,13 +22,14 @@
   "homepage": "https://github.com/fusion-io/fusion#readme",
   "dependencies": {
     "@fusion.io/framework": "^1.5.12",
+    "@fusion.io/objection-binding": "^1.0.0",
     "chalk": "^2.4.2",
     "cli-progress": "^2.1.1",
-    "dotenv": "^8.0.0",
     "knex": "^0.19.0",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "objection": "^1.6.9",
     "ouch": "^2.0.0",
     "pg": "^7.11.0",
     "winston": "^3.2.1"
@@ -41,7 +42,6 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.4",
     "babel-plugin-dynamic-import-node": "^2.3.0",
-    "nodemon": "^1.19.1",
-    "sqlite3": "^4.0.9"
+    "nodemon": "^1.19.1"
   }
 }

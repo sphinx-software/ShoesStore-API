@@ -7,7 +7,7 @@ export default class CreateTableProfilesMigration {
             table.string('email');
             table.string('phone');
             table.string('gender');
-            table.string('avartar');
+            table.string('avatar');
             table.integer('credential_id');
             table.specificType('address', 'text ARRAY');
             table.timestamp('created_at');

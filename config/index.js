@@ -1,6 +1,5 @@
 const path      = require('path');
 const winston   = require('winston');
-require('dotenv').config();
 
 /**
  * This is the default application configuration. If you switch your environment by setting NODE_ENV environment
@@ -237,6 +236,7 @@ module.exports = {
         '@fusion.io/framework/View/ViewServiceProvider',
         '@fusion.io/framework/I18N/I18NextServiceProvider',
         '@fusion.io/framework/Form/FormServiceProvider',
+        '@fusion.io/objection-binding/ObjectionServiceProvider',
 
 
         /**

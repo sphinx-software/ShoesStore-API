@@ -10,7 +10,8 @@ import {
 
 import HelloWorldController from "./Controllers/HelloWorldController";
 import WelcomeMesssage from "../HAL/WelcomeMesssage";
-import ProductController from "../Product/ProductController";
+import ProductController from "../ShoesStore/Product/ProductController";
+import ProfileController from "../ShoesStore/User/ProfileController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -81,6 +82,7 @@ export default class HttpServiceProvider extends FrameworkProvider {
                 await ctx.render(WelcomeMesssage, {message: 'Hello world', from: "Shoes store", id: ctx.params.id})
             })
             .controller(ProductController)
+            .controller(ProfileController)
         ;
     }
 }
