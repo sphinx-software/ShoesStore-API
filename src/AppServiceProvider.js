@@ -1,4 +1,5 @@
-import {ServiceProvider} from "@fusion.io/framework";
+import {ServiceProvider, QueueRegistry} from "@fusion.io/framework";
+import HeavyJob from "./HeavyJob";
 export default class AppServiceProvider extends ServiceProvider {
 
     register() {
@@ -6,6 +7,10 @@ export default class AppServiceProvider extends ServiceProvider {
     }
 
     boot() {
+        const registry = this.container.make(QueueRegistry);
 
+        registry
+            .register(HeavyJob)
+        ;
     }
 }

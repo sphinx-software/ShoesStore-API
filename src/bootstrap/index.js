@@ -1,5 +1,6 @@
 import loadConfig from "./loadConfig";
 import bootServiceProviders from "./bootServiceProviders";
+import {container} from "@fusion.io/framework";
 
 export default async (event) => {
 
@@ -22,4 +23,6 @@ export default async (event) => {
     // Your task here
 
     event.emit('fusion.server.bootstrapped');
+
+    return container;
 };
