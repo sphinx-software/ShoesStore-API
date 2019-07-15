@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/fusion-io/fusion#readme",
   "dependencies": {
-    "@fusion.io/framework": "^1.5.12",
+    "@fusion.io/framework": "^1.5.13",
     "@fusion.io/objection-binding": "^1.0.0",
     "chalk": "^2.4.2",
     "cli-progress": "^2.1.1",
@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.4",
     "babel-plugin-dynamic-import-node": "^2.3.0",
+    "faker": "^4.1.0",
     "nodemon": "^1.19.1"
   }
 }

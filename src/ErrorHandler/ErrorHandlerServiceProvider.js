@@ -1,6 +1,7 @@
 import Ouch from "ouch";
 import {ServiceProvider, HttpKernel} from "@fusion.io/framework";
 import {Config, Logger} from "@fusion.io/framework/Contracts";
+import ModelNotFound from "../ShoesStore/ModelNotFound";
 
 export default class ErrorHandlerServiceProvider extends ServiceProvider {
     register() {

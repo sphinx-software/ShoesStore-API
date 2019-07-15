@@ -10,7 +10,7 @@ export default class ProfileController {
 
     @get('/profiles/:id')
     async detail(context) {
-        const profile = await Profile.query().findById(context.params.id);
+        const profile = await Profile.findOrFail(context.params.id);
         return await context.render(ProfileResource, profile)
     }
 
