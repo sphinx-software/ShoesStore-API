@@ -1,4 +1,4 @@
-import {get,post,singleton} from "@fusion.io/framework"
+import {get,post,singleton, del} from "@fusion.io/framework"
 import Profile from "./Profile";
 import ProfileResource from "./ProfileResource";
 
@@ -30,5 +30,9 @@ export default class ProfileController {
                 updated_at       :"12/05/2019",
                 delete_at       :false
             });
+    }
+    @del('/profiles/:id')
+    async delete(context) {
+        await Profile.query().deleteById(context.params.id);
     }
 }
