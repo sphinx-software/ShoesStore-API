@@ -18,7 +18,7 @@ export default class ProductController {
     }
 
     @middleware(CreateProductForm)
-    @post('/products/:id')
+    @post('/products')
     async create() {
         // TODO
     }

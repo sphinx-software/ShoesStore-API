@@ -10,7 +10,7 @@ export default class Profile extends Model {
         const model = await Profile.query().findById(id);
 
         if (!model) {
-            throw new ModelNotFound()
+            throw new ModelNotFound();
         }
 
         return  model;
