@@ -50,7 +50,12 @@
     "url": "{{field}} is not a valid URL",
     "uppercase": "{{field}} only allows uppercase characters",
     "matches": "{{field}} does not match with {{args.0}}",
-    "required": "{{field}} is required"
+    "required": "{{field}} is required",
+    "profile": {
+      "email": {
+        "unique": "Email {{value}} already used"
+      }
+    }
   }
 }
 

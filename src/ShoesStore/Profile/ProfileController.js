@@ -12,7 +12,7 @@ export default class ProfileController {
     @middleware(ProfileRequired)
     @get('/profiles/:id')
     async detail(context) {
-        let user = await  context.user();
+        let user = await context.user();
         console.log(user.id);
         return await context.render(ProfileResource, context.profile);
     }
@@ -43,7 +43,7 @@ export default class ProfileController {
     @middleware(ProfileForm)
     @post('/profiles')
     async create(context) {
-        let user = await  context.user();
+        let user = await context.user();
         let profile = await Profile.query().insert({
             name: context.request.body.name,
             email: context.request.body.email,

@@ -4,7 +4,7 @@ import Form from "../Form";
 @bind()
 @form({
     name    : 'required',
-    email   : 'required|email',
+    email   : 'required|email|profile.email.unique',
     phone   : 'required|phone',
     address : 'required',
     avatar  :'required|url',

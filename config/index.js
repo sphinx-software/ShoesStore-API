@@ -259,6 +259,8 @@ module.exports = {
 
         './Http/HttpServiceProvider',
         './ErrorHandler/ErrorHandlerServiceProvider',
-        './AppServiceProvider'
+        './AppServiceProvider',
+
+        "./ShoesStore/ShoesStoreServiceProvider"
     ]
 };
