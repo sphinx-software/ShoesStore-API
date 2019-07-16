@@ -1,4 +1,4 @@
-import Profile from "../../ShoesStore/User/Profile";
+import Profile from "../../ShoesStore/Profile/Profile";
 import faker from "faker";
 import {inject} from "@fusion.io/framework";
 

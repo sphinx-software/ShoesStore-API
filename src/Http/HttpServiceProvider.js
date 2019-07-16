@@ -11,7 +11,7 @@ import {
 import HelloWorldController from "./Controllers/HelloWorldController";
 import WelcomeMesssage from "../HAL/WelcomeMesssage";
 import ProductController from "../ShoesStore/Product/ProductController";
-import ProfileController from "../ShoesStore/User/ProfileController";
+import ProfileController from "../ShoesStore/Profile/ProfileController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
