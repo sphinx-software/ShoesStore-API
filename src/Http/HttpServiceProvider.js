@@ -9,9 +9,10 @@ import {
 } from "@fusion.io/framework";
 
 import HelloWorldController from "./Controllers/HelloWorldController";
-import WelcomeMesssage from "../HAL/WelcomeMesssage";
-import ProductController from "../ShoesStore/Product/ProductController";
-import ProfileController from "../ShoesStore/Profile/ProfileController";
+import WelcomeMesssage      from "../HAL/WelcomeMesssage";
+import ProductController    from "../ShoesStore/Product/ProductController";
+import ProfileController    from "../ShoesStore/Profile/ProfileController";
+import KoaBody              from "koa-bodyparser";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -29,7 +30,8 @@ export default class HttpServiceProvider extends FrameworkProvider {
         return [
             AccessLogger,
             ServeStatic,
-            RenderView
+            RenderView,
+            KoaBody()
         ]
     }
 

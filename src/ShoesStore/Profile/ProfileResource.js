@@ -6,12 +6,13 @@ export default class ProfileResource extends HalTemplate {
     render(profile) {
         this
             .state("id", profile.id)
+            .state('email', profile.email)
             .state('name', profile.name)
             .state('phone', profile.phone)
             .state('gender', profile.gender)
             .state('avatar', profile.avatar)
             .state('address', profile.address)
-            .embed('credential', CredentialResource, profile)
         ;
     }
 }
+
