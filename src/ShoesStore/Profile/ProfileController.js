@@ -32,4 +32,8 @@ export default class ProfileController {
                 delete_at       :false
             });
     }
+    @del('/profiles/:id')
+    async delete(context) {
+        await Profile.query().deleteById(context.params.id);
+    }
 }
