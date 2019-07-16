@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/fusion-io/fusion#readme",
   "dependencies": {
-    "@fusion.io/framework": "^1.5.13",
-    "@fusion.io/objection-binding": "^1.0.0",
+    "@fusion.io/framework": "^1.5.14",
+    "@fusion.io/objection-binding": "^1.0.1",
     "chalk": "^2.4.2",
     "cli-progress": "^2.1.1",
     "knex": "^0.19.0",

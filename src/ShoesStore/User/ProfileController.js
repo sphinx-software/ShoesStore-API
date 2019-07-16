@@ -16,17 +16,19 @@ export default class ProfileController {
 
     @post('/profiles')
     async create() {
-        // await this.repos.create({
-        //     name            :"linhdz",
-        //     email           :"linh.dev@gmail.com",
-        //     phone           :"0987654421",
-        //     gender          :"nam",
-        //     avatar          :"avatar",
-        //     credential_id   :1,
-        //     address         :['Ha Noi'],
-        //     create_at       :"12/05/2018",
-        //     update_at       :"12/05/2019",
-        //     delete_at       :true
-        // });
+        const profile = await Profile
+            .query()
+            .insert({
+                name            :"linhdz",
+                email           :"linh.dev@gmail.com",
+                phone           :"0987654421",
+                gender          :"nam",
+                avatar          :"avatar",
+                credential_id   :1,
+                address         :['Ha Noi'],
+                created_at       :"12/05/2018",
+                updated_at       :"12/05/2019",
+                delete_at       :false
+            });
     }
 }

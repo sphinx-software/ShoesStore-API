@@ -1,8 +1,10 @@
 import Profile from "../../ShoesStore/User/Profile";
 import faker from "faker";
+import {inject} from "@fusion.io/framework";
+
 
 export default class UserSeeder {
-
+    @inject()
     async seed() {
         for (let index = 0; index < 30; index++) {
             await Profile.query().insert({
@@ -14,7 +16,10 @@ export default class UserSeeder {
                     faker.address.streetAddress(),
                     faker.address.streetAddress()
                 ],
-                avatar: faker.image.avatar()
+                avatar: faker.image.avatar(),
+                created_at:new Date(),
+                updated_at:new Date(),
+                delete_at:faker.random.boolean().toString()
             });
         }
     }
