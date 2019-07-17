@@ -1,5 +1,7 @@
-const path      = require('path');
-const winston   = require('winston');
+const path          = require('path');
+const winston       = require('winston');
+const LocalStrategy = require('passport-local');
+
 const {knexSnakeCaseMappers} = require('objection');
 
 /**
@@ -32,6 +34,18 @@ module.exports = {
      *
      */
     debug: process.env.APP_DEBUG || false,
+
+    auth: {
+        strategies: {
+            local: {
+                provider: '',
+                strategy: LocalStrategy,
+                options: {
+
+                }
+            }
+        }
+    },
 
     /**
      * We use i18next as our major translation service.
@@ -239,7 +253,7 @@ module.exports = {
         '@fusion.io/framework/I18N/I18NextServiceProvider',
         '@fusion.io/framework/Form/FormServiceProvider',
         '@fusion.io/objection-binding/ObjectionServiceProvider',
-
+        '@fusion.io/passport-binding/PassportServiceProvider',
 
         /**
          * Application services
