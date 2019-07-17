@@ -8,8 +8,8 @@ export default class CreateTableProductsMigration {
             table.integer('model_id');
             table.integer('quantity');
             table.integer('unit_price');
-            table.timestamp('created_at');
-            table.timestamp('updated_at');
+            table.timestamps();
+            table.timestamp('deleted_at');
         });
     }
 

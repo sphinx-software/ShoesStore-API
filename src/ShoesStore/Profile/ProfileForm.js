@@ -4,11 +4,11 @@ import Form from "../Form";
 @bind()
 @form({
     name    : 'required',
-    email   : 'required|email|profile.email.unique',
     phone   : 'required|phone',
     address : 'required',
-    avatar  :'required|url',
-    gender  :'required|boolean'
+    avatar  : 'required|url',
+    gender  : 'required|boolean',
+    dob     : 'required'
 })
 export default class ProfileForm extends Form {
 

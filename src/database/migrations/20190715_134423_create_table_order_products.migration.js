@@ -10,9 +10,6 @@ export default class CreateTableOrderProductsMigration {
             table.string('name');
             table.string('size');
             table.string('color');
-            table.timestamp('created_at');
-            table.timestamp('updated_at');
-            table.boolean('delete_at');
         });
     }
 

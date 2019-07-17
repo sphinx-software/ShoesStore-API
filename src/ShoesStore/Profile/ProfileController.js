@@ -6,62 +6,52 @@ import ProfileForm from "./ProfileForm";
 import ProfileRequired from "./ProfileRequired";
 import LoginRequired from "../LoginRequired";
 
-@middleware(LoginRequired)
 @singleton()
+@middleware(LoginRequired)
 export default class ProfileController {
+
     @middleware(ProfileRequired)
     @get('/profiles/:id')
     async detail(context) {
-        let user = await context.user();
-        console.log(user.id);
+        await context.user();
         return await context.render(ProfileResource, context.profile);
     }
 
     @get('/profiles')
     async get(context) {
-        const profiles = await Profile.query().select('*');
+        const profiles = await Profile.query();
+
         return await context.render(ProfileCollection, profiles)
     }
 
+    @middleware(ProfileRequired, ProfileForm)
     @put('/profiles/:id')
     async update(context) {
+        const profiles   = context.profile;
+
+        await profiles.$query().patch({...context.profileForm});
+
         context.status = 200;
-        await Profile.query().update({
-            name: context.request.body.name,
-            email: context.request.body.email,
-            phone: context.request.body.phone,
-            gender: context.request.body.gender,
-            avatar: context.request.body.avatar,
-            credential_id: context.request.body.credential_id,
-            address: context.request.body.address,
-            created_at: new Date(),
-            updated_at: new Date(),
-            delete_at: false
-        }).where('id', context.params.id);
+        return context.render(ProfileResource, profiles)
     }
 
     @middleware(ProfileForm)
     @post('/profiles')
     async create(context) {
-        let user = await context.user();
-        let profile = await Profile.query().insert({
-            name: context.request.body.name,
-            email: context.request.body.email,
-            phone: context.request.body.phone,
-            gender: context.request.body.gender,
-            avatar: context.request.body.avatar,
-            credential_id: user.id,
-            address: context.request.body.address,
-            created_at: new Date(),
-            updated_at: new Date(),
-            delete_at: false
-        });
+        let profile = await Profile.query()
+            .insert({...context.profileForm})
+        ;
+
         context.status = 201;
         await context.render(ProfileResource, profile);
     }
 
+    @middleware(ProfileRequired)
     @del('/profiles/:id')
     async delete(context) {
-        await Profile.query().deleteById(context.params.id);
+        const profile = context.profile;
+
+        await profile.$query().delete();
+        return await context.render(ProfileResource, profile);
     }
 }

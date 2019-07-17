@@ -10,9 +10,8 @@ export default class CreateTableProfilesMigration {
             table.string('avatar');
             table.integer('credential_id');
             table.specificType('address', 'text ARRAY');
-            table.timestamp('created_at');
-            table.timestamp('updated_at');
-            table.boolean('delete_at');
+            table.timestamps();
+            table.timestamp('deleted_at');
         });
     }
 

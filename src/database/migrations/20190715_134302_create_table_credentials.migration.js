@@ -7,9 +7,8 @@ export default class CreateTableCredentialsMigration {
             table.string('password');
             table.string('external_login');
             table.string('type');
-            table.timestamp('created_at');
-            table.timestamp('updated_at');
-            table.boolean('delete_at');
+            table.timestamps();
+            table.timestamp('deleted_at');
         });
     }
 

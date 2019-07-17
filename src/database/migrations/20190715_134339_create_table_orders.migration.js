@@ -12,9 +12,8 @@ export default class CreateTableOrdersMigration {
             table.string('customer_name');
             table.text('address');
             table.string('phone');
-            table.timestamp('created_at');
-            table.timestamp('updated_at');
-            table.boolean('delete_at');
+            table.timestamps();
+            table.timestamp('deleted_at');
         });
     }
 

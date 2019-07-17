@@ -1,5 +1,6 @@
 const path      = require('path');
 const winston   = require('winston');
+const {knexSnakeCaseMappers} = require('objection');
 
 /**
  * This is the default application configuration. If you switch your environment by setting NODE_ENV environment
@@ -82,7 +83,8 @@ module.exports = {
                     user : process.env.POSTGRES_USER,
                     password : process.env.POSTGRES_PASSWORD,
                     database : process.env.POSTGRES_DB
-                }
+                },
+                ...knexSnakeCaseMappers()
             }
         }
     },

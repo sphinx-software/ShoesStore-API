@@ -1,22 +1,11 @@
-import {Model} from "objection";
-import ModelNotFound from "../ModelNotFound";
+import {Model, type} from "@fusion.io/objection-binding";
+import hasTimestamps from "@fusion.io/objection-binding/abilities/hasTimestamps";
+import softDelete from "@fusion.io/objection-binding/abilities/softDelete";
+import DateTime from "@fusion.io/objection-binding/types/moment";
 
+@type('dob', DateTime)
+@softDelete()
+@hasTimestamps()
 export default class Profile extends Model {
-    static get tableName() {
-        return 'profiles'
-    }
 
-    static async findOrFail(id) {
-        const model = await Profile.query().findById(id);
-
-        if (!model) {
-            throw new ModelNotFound();
-        }
-
-        return  model;
-    }
-
-    printName() {
-        return this.name.toUpperCase()
-    }
 }
