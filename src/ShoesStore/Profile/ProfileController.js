@@ -28,7 +28,6 @@ export default class ProfileController {
     @put('/profiles/:id')
     async update(context) {
         const profile   = context.profile;
-
         await profile.$query().patch({...context.profileForm});
 
         context.status = 200;
