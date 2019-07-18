@@ -1,6 +1,6 @@
 import {inject} from "@fusion.io/framework";
-import ProductSeeder from "../../ShoesStore/Product/ProductSeeder.seeder";
 import UserSeeder from "./UserSeeder.seeder";
+import CredentialSeeder from "./CredentialSeeder.seeder";
 
 export default class DatabaseSeeder {
 
@@ -9,5 +9,6 @@ export default class DatabaseSeeder {
         //
         // await new ProductSeeder().seed()
         await new UserSeeder().seed();
+        await new CredentialSeeder().seed();
     }
 }
