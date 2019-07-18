@@ -28,12 +28,12 @@ export default class ProfileController {
     @middleware(ProfileRequired, ProfileForm)
     @put('/profiles/:id')
     async update(context) {
-        const profiles = context.profile;
+        const profile = context.profile;
 
-        await profiles.$query().patch(context.profileForm);
+        await profile.$query().patch(context.profileForm);
 
         context.status = 200;
-        return await context.render(ProfileResource, profiles)
+        return await context.render(ProfileResource, profile)
     }
 
     @middleware(ProfileForm)

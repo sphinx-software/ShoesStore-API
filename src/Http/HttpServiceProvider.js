@@ -12,6 +12,7 @@ import HelloWorldController from "./Controllers/HelloWorldController";
 import WelcomeMesssage      from "../HAL/WelcomeMesssage";
 import ProductController    from "../ShoesStore/Product/ProductController";
 import ProfileController    from "../ShoesStore/Profile/ProfileController";
+import CollectionController from "../ShoesStore/Collection/CollectionController"
 import KoaBody              from "koa-bodyparser";
 import LoginController      from "./Auth/LoginController";
 
@@ -89,6 +90,7 @@ export default class HttpServiceProvider extends FrameworkProvider {
             })
             .controller(ProductController)
             .controller(ProfileController)
+            .controller(CollectionController)
         ;
     }
 }
