@@ -13,6 +13,7 @@ import WelcomeMesssage      from "../HAL/WelcomeMesssage";
 import ProductController    from "../ShoesStore/Product/ProductController";
 import ProfileController    from "../ShoesStore/Profile/ProfileController";
 import KoaBody              from "koa-bodyparser";
+import LoginController      from "./Auth/LoginController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -71,7 +72,10 @@ export default class HttpServiceProvider extends FrameworkProvider {
      * @param router
      */
     webRouting(router) {
-        router.controller(HelloWorldController);
+        router
+            .controller(HelloWorldController)
+            .controller(LoginController)
+        ;
     }
 
     /**

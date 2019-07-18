@@ -38,12 +38,9 @@ module.exports = {
     auth: {
         strategies: {
             local: {
-                provider: '',
-                strategy: LocalStrategy,
-                options: {
+                strategy: LocalStrategy
+            },
 
-                }
-            }
         }
     },
 

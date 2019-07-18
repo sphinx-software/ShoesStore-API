@@ -13,6 +13,7 @@ export default class ProfileController {
     @middleware(ProfileRequired)
     @get('/profiles/:id')
     async detail(context) {
+        context.status = 201;
         return await context.render(ProfileResource, context.profile);
     }
 
@@ -20,6 +21,7 @@ export default class ProfileController {
     async get(context) {
         const profiles = await Profile.query();
 
+        context.status = 201;
         return await context.render(ProfileCollection, profiles)
     }
 
@@ -28,17 +30,17 @@ export default class ProfileController {
     async update(context) {
         const profiles = context.profile;
 
-        await profiles.$query().patch({...context.profileForm});
+        await profiles.$query().patch(context.profileForm);
 
         context.status = 200;
-        return context.render(ProfileResource, profiles)
+        return await context.render(ProfileResource, profiles)
     }
 
     @middleware(ProfileForm)
     @post('/profiles')
     async create(context) {
         let profile = await Profile.query()
-            .insert({...context.profileForm})
+            .insert(context.profileForm)
         ;
 
         context.status = 201;
