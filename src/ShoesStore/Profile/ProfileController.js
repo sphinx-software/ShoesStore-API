@@ -40,9 +40,7 @@ export default class ProfileController {
     @post('/profiles')
     async create(context) {
         let profile = await Profile.query()
-            .insert(context.profileForm)
-        ;
-
+            .insert(context.profileForm);
         context.status = 201;
         await context.render(ProfileResource, profile);
     }
