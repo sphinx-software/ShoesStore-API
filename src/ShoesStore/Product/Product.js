@@ -1,13 +1,9 @@
-export default class Product {
-    constructor(id) {
-        this.id = id;
-    }
+import {Model} from "@fusion.io/objection-binding";
+import hasTimestamps from "@fusion.io/objection-binding/abilities/hasTimestamps";
+import softDelete from "@fusion.io/objection-binding/abilities/softDelete";
 
-    getId() {
-        return this.id;
-    }
+@softDelete()
+@hasTimestamps()
+export default class Product extends Model{
 
-    getName() {
-        return 'Fake product';
-    }
 }

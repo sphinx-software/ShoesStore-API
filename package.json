@@ -32,6 +32,7 @@
     "koa-static": "^5.0.0",
     "objection": "^1.6.9",
     "ouch": "^2.0.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.11.0",
     "slug": "^1.1.0",
     "winston": "^3.2.1"
