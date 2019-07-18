@@ -7,6 +7,7 @@ import DateTime from "@fusion.io/objection-binding/types/moment";
 // @type('shippedDate', DateTime)
 @hasTimestamps()
 @softDelete()
-export default class Order extends Model{
+export default class Order extends Model {
 
 }
+
