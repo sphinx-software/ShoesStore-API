@@ -14,6 +14,10 @@ export default class ShoesStoreServiceProvider extends ServiceProvider {
                 'profile.email.unique',
                 async email => !await Profile.query().where({email}).first()
             )
+            .register(
+                'minlength',
+                async (value, min) => !(value.length <= min)
+            )
         ;
     }
 }

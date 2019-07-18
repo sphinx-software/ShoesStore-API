@@ -7,6 +7,8 @@ export default class CreateTableCollectionsMigration {
             table.string('name');
             table.string('slug');
             table.specificType('related_slugs', 'text ARRAY');
+            table.timestamps();
+            table.timestamp('deleted_at');
         });
     }
 

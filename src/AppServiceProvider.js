@@ -1,5 +1,7 @@
 import {ServiceProvider, QueueRegistry} from "@fusion.io/framework";
-import HeavyJob from "./HeavyJob";
+import { IdentityPool } from "@fusion.io/passport-binding";
+import Credential from "./Http/Auth/Credential";
+
 export default class AppServiceProvider extends ServiceProvider {
 
     register() {
@@ -7,10 +9,10 @@ export default class AppServiceProvider extends ServiceProvider {
     }
 
     boot() {
-        const registry = this.container.make(QueueRegistry);
+        const pool = this.container.make(IdentityPool);
 
-        registry
-            .register(HeavyJob)
-        ;
+        pool.provideFor('local', async (username, password) => {
+            return await Credential.query().first();
+        });
     }
 }

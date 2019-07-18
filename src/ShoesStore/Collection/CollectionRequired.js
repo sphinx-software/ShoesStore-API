@@ -1,18 +1,19 @@
 import {singleton} from '@fusion.io/framework';
-import Profile from "./Profile";
+import Collection from "./Collection";
 import ResourceNotFound from "../ResourceNotFound";
 
 @singleton()
-export default class ProfileRequired {
+export default class CollectionRequired {
     async handle(context, next) {
 
-        const profile = await Profile.query().findById(context.params.id);
-        if (!profile) {
+        const collection = await Collection.query().findById(context.params.id);
+
+        if (!collection) {
             context.status = 404;
             return await context.render(ResourceNotFound, {url: context.path});
         }
 
-        context.profile = profile;
+        context.collection = collection;
         await next();
     }
 }

@@ -13,7 +13,7 @@ export default class ProfileController {
     @middleware(ProfileRequired)
     @get('/profiles/:id')
     async detail(context) {
-        await context.user();
+        context.status = 201;
         return await context.render(ProfileResource, context.profile);
     }
 
@@ -21,27 +21,26 @@ export default class ProfileController {
     async get(context) {
         const profiles = await Profile.query();
 
+        context.status = 201;
         return await context.render(ProfileCollection, profiles)
     }
 
     @middleware(ProfileRequired, ProfileForm)
     @put('/profiles/:id')
     async update(context) {
-        const profiles   = context.profile;
+        const profile = context.profile;
 
-        await profiles.$query().patch({...context.profileForm});
+        await profile.$query().patch(context.profileForm);
 
         context.status = 200;
-        return context.render(ProfileResource, profiles)
+        return await context.render(ProfileResource, profile)
     }
 
     @middleware(ProfileForm)
     @post('/profiles')
     async create(context) {
         let profile = await Profile.query()
-            .insert({...context.profileForm})
-        ;
-        console.log(context.profileForm);
+            .insert(context.profileForm);
         context.status = 201;
         await context.render(ProfileResource, profile);
     }
@@ -50,8 +49,12 @@ export default class ProfileController {
     @del('/profiles/:id')
     async delete(context) {
         const profile = context.profile;
-
         await profile.$query().delete();
         return await context.render(ProfileResource, profile);
+    }
+    @get('/test')
+    async test(context) {
+        const profile = await Profile.query().includeTrash();
+        context.body = profile;
     }
 }
