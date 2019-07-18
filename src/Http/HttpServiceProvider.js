@@ -15,6 +15,7 @@ import ProfileController    from "../ShoesStore/Profile/ProfileController";
 import CollectionController from "../ShoesStore/Collection/CollectionController"
 import KoaBody              from "koa-bodyparser";
 import LoginController      from "./Auth/LoginController";
+import ModelController from "../ShoesStore/Model/ModelController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -91,6 +92,7 @@ export default class HttpServiceProvider extends FrameworkProvider {
             .controller(ProductController)
             .controller(ProfileController)
             .controller(CollectionController)
+            .controller(ModelController)
         ;
     }
 }
