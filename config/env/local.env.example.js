@@ -7,6 +7,9 @@ const path    = require('path');
  */
 
 module.exports = {
+    http: {
+        port: 3000
+    },
 
     /**
      * Turn on the debug flag

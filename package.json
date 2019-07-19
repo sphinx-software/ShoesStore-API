@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/fusion-io/fusion.git"
   },
-  "author": "rikky <son.levuthai@gmail.com>",
+  "author": "rikky <son.levuthai@gmail.com> ",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fusion-io/fusion/issues"
