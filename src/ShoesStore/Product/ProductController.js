@@ -10,10 +10,7 @@ export default class ProductController {
 
     @get('/products')
     async get(context) {
-        const products = await Product.query().select('products.*').includeTrash()
-            .join('models','products.model_id', 'models.id')
-            .join('collections','models.collection_id', 'collections.id')
-            ;
+        const products = await Product.query();
         context.status = 200;
         return await context.render(CollectionProductResource, products);
     }
