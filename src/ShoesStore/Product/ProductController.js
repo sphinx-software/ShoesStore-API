@@ -5,20 +5,24 @@ import Product                                      from "./Product";
 import ProductRequired                              from "./ProductRequired";
 import CollectionProductResource                    from "./CollectionProductResource";
 
+
 @singleton()
 export default class ProductController {
     @get('/products')
     async get(context) {
-        const products = await Product.query();
-
-        context.status = 200;
+        const products = await Product
+            .query()
+            .select('products.*', 'models.*', 'collections.*')
+            .includeTrash()
+            .join('models', 'products.model_id', 'models.id' )
+            .join('collections', 'models.collection_id', 'collections.id')
+        ;
         return await context.render(CollectionProductResource, products);
     }
 
     @middleware(ProductRequired)
     @get('/products/:id')
     async detail(context) {
-        context.status = 200;
         return await context.render(ProductResource, context.product)
     }
 
@@ -36,8 +40,6 @@ export default class ProductController {
     async update(context) {
         const product = context.product;
         await product.$query().patch(context.productForm);
-
-        context.status = 200;
         return  await context.render(ProductResource, product);
     }
 
