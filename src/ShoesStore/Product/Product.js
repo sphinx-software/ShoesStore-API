@@ -6,4 +6,5 @@ import softDelete from "@fusion.io/objection-binding/abilities/softDelete";
 @hasTimestamps()
 export default class Product extends Model{
 
+
 }

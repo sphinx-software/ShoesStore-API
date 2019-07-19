@@ -28,7 +28,12 @@ export default class ModelController {
 
     @get('/models')
     async get(context) {
-        const models = await Model.query();
+        const models = await Model
+            .query()
+            .select('models.*','collections.*')
+            .includeTrash()
+            .join('collections','models.collection_id','collections.id')
+        ;
 
         context.status = 200;
         await context.render(CollectionModelResource, models);
