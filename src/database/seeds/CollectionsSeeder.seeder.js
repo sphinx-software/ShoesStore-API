@@ -1,12 +1,13 @@
-import {inject} from "@fusion.io/framework";
-import faker from "faker";
-import Collection from "../../ShoesStore/Collection/Collection";
-var slug = require("slug")
+import {inject}     from "@fusion.io/framework";
+import faker        from "faker";
+import Collection   from "../../ShoesStore/Collection/Collection";
+const slug          = require("slug");
 
 export default class CollectionsSeeder {
 
     @inject()
     async seed() {
+        await Collection.query().truncate();
         for (let index = 0; index < 5; index++) {
             let name = faker.name.jobTitle();
             let slugName = slug(name.toLowerCase());

@@ -1,5 +1,5 @@
-import Profile from "../../ShoesStore/Profile/Profile";
-import faker from "faker";
+import Profile  from "../../ShoesStore/Profile/Profile";
+import faker    from "faker";
 import {inject} from "@fusion.io/framework";
 
 
