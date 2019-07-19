@@ -7,6 +7,7 @@ export default class ModelSeeder {
     @inject()
     async seed() {
         await Model.query().truncate();
+
         for (let i = 0; i <5 ; i++) {
             await Model.query().insert({
                 collection_id:1,

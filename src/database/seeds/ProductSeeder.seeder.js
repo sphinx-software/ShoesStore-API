@@ -7,6 +7,7 @@ export default class ProductsSeeder {
     @inject()
     async seed() {
         await Product.query().truncate();
+
         for (let i = 0; i <20 ; i++) {
             await Product.query().insert({
                 model_id:1,

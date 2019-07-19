@@ -7,6 +7,7 @@ export default class CredentialSeeder {
     @inject(Hasher)
     async seed(hasher) {
         await Credential.query().truncate();
+
         const testAccount = [{
             username: 'admin',
             password: await hasher.hash('123'),

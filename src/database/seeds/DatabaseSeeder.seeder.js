@@ -1,10 +1,10 @@
-import {inject}             from "@fusion.io/framework";
-import UserSeeder           from "./UserSeeder.seeder";
-import CredentialSeeder     from "./CredentialSeeder.seeder";
-import CollectionsSeeder    from "./CollectionsSeeder.seeder";
-import ModelSeeder          from "./ModelSeeder.seeder";
-import ProductSeeder        from "./ProductSeeder.seeder";
-import OrderSeeder          from "./OrderSeeder.seeder";
+import {inject}                 from "@fusion.io/framework";
+import UserSeeder               from "./UserSeeder.seeder";
+import CredentialSeeder         from "./CredentialSeeder.seeder";
+import CollectionsSeeder        from "./CollectionsSeeder.seeder";
+import ModelSeeder              from "./ModelSeeder.seeder";
+import ProductSeeder            from "./ProductSeeder.seeder";
+import OrderSeeder              from "./OrderSeeder.seeder";
 
 export default class DatabaseSeeder {
 

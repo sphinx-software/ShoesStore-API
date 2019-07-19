@@ -8,6 +8,7 @@ export default class CollectionsSeeder {
     @inject()
     async seed() {
         await Collection.query().truncate();
+
         for (let index = 0; index < 5; index++) {
             let name = faker.name.jobTitle();
             let slugName = slug(name.toLowerCase());
