@@ -1,11 +1,13 @@
-import Order from "../../ShoesStore/Orders/Order";
-import {inject} from "@fusion.io/framework";
-import faker from "faker";
+import Order        from "../../ShoesStore/Orders/Order";
+import {inject}     from "@fusion.io/framework";
+import faker        from "faker";
 
 export default class OrderSeederSeeder {
 
     @inject()
     async seed() {
+        await Order.query().truncate();
+
         await Order.query().insert({
             profile_id: 1,
             order_date: faker.date.past(),
