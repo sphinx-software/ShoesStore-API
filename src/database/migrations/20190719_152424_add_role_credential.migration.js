@@ -5,7 +5,6 @@ export default class AddRoleCredentialMigration {
             table.string('role');
         });
     }
-
     async down(schema) {
         await schema.alterTable('credentials', table => {
             table.dropColumn('role');
