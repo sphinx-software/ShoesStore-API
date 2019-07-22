@@ -1,6 +1,6 @@
-import {Model, type} from "@fusion.io/objection-binding";
+import { Model } from "@fusion.io/objection-binding";
 import hasTimestamps from "@fusion.io/objection-binding/abilities/hasTimestamps";
-import softDelete from "@fusion.io/objection-binding/abilities/softDelete";
+import softDelete    from "@fusion.io/objection-binding/abilities/softDelete";
 
 
 @softDelete()

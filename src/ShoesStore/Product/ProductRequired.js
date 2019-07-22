@@ -1,5 +1,5 @@
-import {singleton} from "@fusion.io/framework";
-import Product from "./Product";
+import {singleton}      from "@fusion.io/framework";
+import Product          from "./Product";
 import ResourceNotFound from "../ResourceNotFound";
 
 @singleton()

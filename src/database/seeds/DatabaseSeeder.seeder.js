@@ -14,8 +14,8 @@ export default class DatabaseSeeder {
         await new CredentialSeeder().seed();
         await new OrderSeeder().seed();
         await new CollectionsSeeder().seed();
-        await new ModelsSeeder().seed();
+        await new ModelSeeder().seed();
         await new OrderSeeder().seed();
-        await new ProductsSeeder().seed();
+        await new ProductSeeder().seed();
     }
 }

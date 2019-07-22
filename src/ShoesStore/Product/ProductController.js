@@ -18,7 +18,6 @@ export default class ProductController {
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
         ;
-        const products = await Product.query();
         context.status = 200;
         return await context.render(CollectionProductResource, products);
     }

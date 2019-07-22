@@ -1,6 +1,6 @@
-import {Model} from "objection";
-import {inject}     from "@fusion.io/framework";
-import {Hasher}     from "@fusion.io/framework/Contracts"
+import { Model }      from "objection";
+import { inject }     from "@fusion.io/framework";
+import { Hasher }     from "@fusion.io/framework/Contracts"
 
 export default class Credential extends Model {
     static get tableName() {
