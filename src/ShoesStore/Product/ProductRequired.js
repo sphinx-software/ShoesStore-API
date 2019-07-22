@@ -12,8 +12,6 @@ export default class ProductRequired {
             .includeTrash()
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
-            .findById(context.params.id);
-
         if (!product) {
             context.status = 404;
             return context.render(ResourceNotFound, {url:context.path});
