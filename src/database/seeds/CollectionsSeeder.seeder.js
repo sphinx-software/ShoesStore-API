@@ -1,8 +1,7 @@
-import {inject} from "@fusion.io/framework";
-import faker from "faker";
-import Collection from "../../ShoesStore/Collection/Collection";
-import Order from "../../ShoesStore/Orders/Order";
-var slug = require("slug")
+import {inject}     from "@fusion.io/framework";
+import faker        from "faker";
+import Collection   from "../../ShoesStore/Collection/Collection";
+const slug          = require("slug");
 
 export default class CollectionsSeeder {
 

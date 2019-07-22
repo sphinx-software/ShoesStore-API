@@ -6,11 +6,12 @@ import ResourceNotFound from "../ResourceNotFound";
 export default class ProductRequired {
     async handle(context, next) {
 
-        const product = await Product.query().select('products.*', 'models.*', 'collections.*').includeTrash()
-            .join('models','products.model_id', 'models.id')
-            .join('collections','models.collection_id', 'collections.id')
-            .findById(context.params.id);
-
+        const product = await Product
+            .query()
+            .select('products.*','models.*', 'collections.*')
+            .includeTrash()
+            .join('models', 'products.model_id', 'models.id' )
+            .join('collections', 'models.collection_id', 'collections.id')
         if (!product) {
             context.status = 404;
             return context.render(ResourceNotFound, {url:context.path});

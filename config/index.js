@@ -1,6 +1,7 @@
 const path          = require('path');
 const winston       = require('winston');
 const LocalStrategy = require('passport-local');
+const TokenStrategy = require('passport-http-bearer');
 
 const {knexSnakeCaseMappers} = require('objection');
 
@@ -40,7 +41,9 @@ module.exports = {
             local: {
                 strategy: LocalStrategy
             },
-
+            token: {
+                strategy: TokenStrategy
+            }
         }
     },
 

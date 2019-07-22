@@ -1,5 +1,5 @@
-import Profile from "../../ShoesStore/Profile/Profile";
-import faker from "faker";
+import Profile  from "../../ShoesStore/Profile/Profile";
+import faker    from "faker";
 import {inject} from "@fusion.io/framework";
 
 
@@ -7,6 +7,7 @@ export default class UserSeeder {
     @inject()
     async seed() {
         await Profile.query().truncate();
+
         for (let index = 0; index < 30; index++) {
             await Profile.query().insert({
                 name: faker.name.findName(),
