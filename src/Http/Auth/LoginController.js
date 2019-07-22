@@ -1,19 +1,29 @@
 import { Authenticator } from "@fusion.io/passport-binding";
 import {singleton, post } from "@fusion.io/framework";
+import { Hasher } from "@fusion.io/framework/Contracts"
+import hat from "hat";
+import Credential from "./Credential";
 
-@singleton(Authenticator)
+@singleton(Authenticator, Hasher)
 export default class LoginController {
 
-    constructor(auth) {
-        this.auth = auth;
+    constructor(auth, hasher) {
+        this.auth   = auth;
+        this.hasher = hasher;
     }
 
     @post('/login')
     async login(context) {
-        let user = await this.auth.authenticate('local', context);
+        let id = await this.auth.authenticate('local', context);
+        let privateKey  = hat();
+        let publicKey   = hat();
+
+        let hashedPrivateKey = await this.hasher.hash(privateKey);
+
+        await Credential.query().patch({apiToken: publicKey + '.' +  hashedPrivateKey}).where({id});
 
         context.body = {
-            user
+            token: publicKey + '.' + privateKey
         }
     }
 }
