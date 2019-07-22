@@ -8,6 +8,7 @@ import CollectionProductResource                    from "./CollectionProductRes
 
 @singleton()
 export default class ProductController {
+
     @get('/products')
     async get(context) {
         const products = await Product
@@ -17,6 +18,7 @@ export default class ProductController {
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
         ;
+        context.status = 200;
         return await context.render(CollectionProductResource, products);
     }
 

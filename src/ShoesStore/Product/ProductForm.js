@@ -1,5 +1,5 @@
 import {form,bind} from "@fusion.io/framework";
-import Form from "../Form";
+import Form        from "../Form";
 
 @bind()
 @form({

@@ -1,5 +1,5 @@
 import {hal, HalTemplate} from "@fusion.io/framework";
-import ProfileResource from "./ProfileResource";
+import ProfileResource    from "./ProfileResource";
 
 @hal(() => '/api/v1/profiles')
 export default class ProfileCollection extends HalTemplate{

@@ -1,9 +1,12 @@
-import {get, post, put, del, singleton, middleware} from "@fusion.io/framework";
-import Order from "./Order";
-import OrderRequired from "./OrderRequired";
-import OrderResource from "./OrderResource";
+import {get, post,
+        put, del,
+        singleton, middleware}
+                       from "@fusion.io/framework";
+import Order           from "./Order";
+import OrderRequired   from "./OrderRequired";
+import OrderResource   from "./OrderResource";
 import OrderCollection from "./OrderCollection";
-import OrderForm     from "./OrderForm";
+import OrderForm       from "./OrderForm";
 
 @singleton()
 export default class OrderController {
