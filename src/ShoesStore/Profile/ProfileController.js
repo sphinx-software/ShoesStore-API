@@ -18,8 +18,14 @@ export default class ProfileController {
 
     @get('/profiles')
     async get(context) {
-        const profiles = await Profile.query();
-
+        const profiles = await Profile.query()
+            .select('profiles.*', 'credentials.id',
+                'credentials.username', 'credentials.role',
+                'credentials.email', 'credentials.external_login'
+            )
+            .includeTrash()
+            .join('credentials', 'profiles.credential_id', 'credentials.id')
+        ;
         context.status = 201;
         return await context.render(ProfileCollection, profiles)
     }

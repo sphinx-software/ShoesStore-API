@@ -7,8 +7,12 @@ export default class ProductRequired {
     async handle(context, next) {
 
         const product = await Product
-            .query()
-            .select('products.*', 'models.name', 'models.description','models.images','models.status','models.tags','models.slug', 'collections.parent_id', 'collections.name', 'collections.slug', 'collections.related_slugs')
+            .query().findById(context.params.id)
+            .select('products.*', 'models.name',
+                'models.description','models.images',
+                'models.status','models.tags','models.slug',
+                'collections.parent_id', 'collections.name as collection_name',
+                'collections.slug as collection_slug', 'collections.related_slugs')
             .includeTrash()
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
