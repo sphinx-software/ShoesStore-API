@@ -7,7 +7,7 @@ import ProfileRequired from "./ProfileRequired";
 import LoginRequired from "../LoginRequired";
 
 @singleton()
-@middleware(LoginRequired)
+// @middleware(LoginRequired)
 export default class ProfileController {
 
     @middleware(ProfileRequired)

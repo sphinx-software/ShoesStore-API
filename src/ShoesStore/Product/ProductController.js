@@ -12,7 +12,7 @@ export default class ProductController {
     async get(context) {
         const products = await Product
             .query()
-            .select('products.*', 'models.*', 'collections.*')
+            .select('products.*', 'models.description', 'models.images', 'models.status', 'models.tags', 'models.slug')
             .includeTrash()
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
