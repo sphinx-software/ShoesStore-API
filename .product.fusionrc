@@ -1,0 +1,12 @@
+{
+  "bootstrap": "build/bootstrap",
+  "console": "build/console",
+  "commands": "build/commands",
+  "migrations": {
+    "directory": "build/database/migrations",
+    "table": "fusion_migrations"
+  },
+  "seeders": {
+    "directory": "build/database/seeds"
+  }
+}

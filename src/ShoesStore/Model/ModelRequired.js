@@ -7,7 +7,7 @@ export default class ModelRequired {
     async handle(context, next) {
         const model = await Model
             .query()
-            .select('models.*','collections.*')
+            .select('models.*', 'collections.parent_id', 'collections.name', 'collections.slug', 'collections.related_slugs')
             .includeTrash()
             .join('collections', 'models.collection_id', 'collections.id')
             .findById(context.params.id)

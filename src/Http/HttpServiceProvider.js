@@ -17,7 +17,7 @@ import CollectionController from "../ShoesStore/Collection/CollectionController"
 import KoaBody              from "koa-bodyparser";
 import LoginController      from "./Auth/LoginController";
 import ModelController      from "../ShoesStore/Model/ModelController";
-import cors                 from "@koa/cors"
+import cors                 from "@koa/cors";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -33,11 +33,11 @@ export default class HttpServiceProvider extends FrameworkProvider {
      */
     globalMiddlewares() {
         return [
+            cors({"Origin": "*"}),
             AccessLogger,
             ServeStatic,
             RenderView,
-            KoaBody(),
-            cors()
+            KoaBody()
         ]
     }
 

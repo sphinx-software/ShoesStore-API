@@ -30,7 +30,7 @@ export default class ModelController {
     async get(context) {
         const models = await Model
             .query()
-            .select('models.*','collections.*')
+            .select('models.*', 'collections.parent_id', 'collections.name', 'collections.slug', 'collections.related_slugs')
             .includeTrash()
             .join('collections','models.collection_id','collections.id')
         ;

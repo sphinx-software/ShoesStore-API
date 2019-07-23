@@ -8,7 +8,7 @@ export default class ProductRequired {
 
         const product = await Product
             .query()
-            .select('products.*','models.*', 'collections.*')
+            .select('products.*', 'models.name', 'models.description','models.images','models.status','models.tags','models.slug', 'collections.parent_id', 'collections.name', 'collections.slug', 'collections.related_slugs')
             .includeTrash()
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
