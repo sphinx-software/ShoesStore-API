@@ -7,7 +7,7 @@ export default class ProductRequired {
     async handle(context, next) {
 
         const product = await Product
-            .query()
+            .query().findById(context.params.id)
             .select('products.*', 'models.name', 'models.description','models.images','models.status','models.tags','models.slug', 'collections.parent_id', 'collections.name', 'collections.slug', 'collections.related_slugs')
             .includeTrash()
             .join('models', 'products.model_id', 'models.id' )

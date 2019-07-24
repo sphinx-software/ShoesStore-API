@@ -25,6 +25,7 @@ export default class ProductController {
     @middleware(ProductRequired)
     @get('/products/:id')
     async detail(context) {
+        console.log(context.product);
         return await context.render(ProductResource, context.product)
     }
 
