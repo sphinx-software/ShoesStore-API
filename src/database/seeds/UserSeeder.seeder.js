@@ -13,7 +13,7 @@ export default class UserSeeder {
                 name: faker.name.findName(),
                 phone: faker.phone.phoneNumber(),
                 dob:faker.date.past(),
-                credential_id:faker.random.number(),
+                credential_id: index + 1,
                 gender: faker.random.boolean().toString(),
                 address: [
                     faker.address.streetAddress(),
