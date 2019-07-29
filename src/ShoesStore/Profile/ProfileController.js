@@ -55,11 +55,8 @@ export default class ProfileController {
     async delete(context) {
         const profile = context.profile;
         await profile.$query().delete();
+
         return await context.render(ProfileResource, profile);
     }
-    @get('/test')
-    async test(context) {
-        const profile = await Profile.query().includeTrash();
-        context.body = profile;
-    }
+
 }

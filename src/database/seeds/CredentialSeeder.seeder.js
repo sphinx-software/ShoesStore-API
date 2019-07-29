@@ -6,7 +6,7 @@ export default class CredentialSeeder {
 
     @inject(Hasher)
     async seed(hasher) {
-        await Credential.query().truncate();
+        await Credential.query().delete();
 
         const testAccount = [{
             username: 'admin',

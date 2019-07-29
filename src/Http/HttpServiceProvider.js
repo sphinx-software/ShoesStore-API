@@ -17,6 +17,7 @@ import CollectionController from "../ShoesStore/Collection/CollectionController"
 import KoaBody              from "koa-bodyparser";
 import LoginController      from "./Auth/LoginController";
 import ModelController      from "../ShoesStore/Model/ModelController";
+import CredentialController from "../ShoesStore/Credential/CredentialController";
 import cors                 from "@koa/cors";
 
 /**
@@ -97,6 +98,7 @@ export default class HttpServiceProvider extends FrameworkProvider {
             .controller(OrderController)
             .controller(CollectionController)
             .controller(ModelController)
+            .controller(CredentialController)
         ;
     }
 }
