@@ -11,9 +11,9 @@ import Form from "../Form";
     size:     'required',
     color:    'required'
 })
-export default class OrderProductForm extends Form{
+export default class BillProductForm extends Form{
 
     getName() {
-        return 'orderProductForm';
+        return 'billProductForm';
     }
 }

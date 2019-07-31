@@ -8,7 +8,6 @@ import Collections from "./Collections"
 
 
 @singleton()
-@middleware(LoginRequired)
 export default class CollectionController {
 
     @get('/collections/:id')

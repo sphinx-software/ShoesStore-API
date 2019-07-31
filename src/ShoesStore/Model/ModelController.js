@@ -8,6 +8,7 @@ import ModelForm                from "./ModelForm";
 import ModelResource            from "./ModelResource";
 import ModelRequired            from "./ModelRequired";
 import CollectionModelResource  from "./CollectionModelResource";
+import Product                  from "../Product/Product";
 
 @singleton()
 export default class ModelController {
@@ -30,9 +31,12 @@ export default class ModelController {
     async get(context) {
         const models = await Model
             .query()
-            .select('models.*','collections.*')
+            .select('models.*', 'collections.parent_id', 'collections.name as collection_name',
+                'collections.slug as collection_slug', 'collections.related_slugs')
             .includeTrash()
             .join('collections','models.collection_id','collections.id')
+            .where('models.deletedAt', null)
+
         ;
 
         context.status = 200;
@@ -53,7 +57,9 @@ export default class ModelController {
     @del("/models/:id")
     async del(context) {
         const model = context.model;
+        const products = await Product.query().select('*').where('model_id', context.params.id);
         await model.$query().delete();
+        products.map(async product => await product.$query().delete());
 
         context.status = 200;
         return await context.render(ModelResource, model);

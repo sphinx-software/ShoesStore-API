@@ -11,14 +11,17 @@ export default class CredentialSeeder {
         const testAccount = [{
             username: 'admin',
             password: await hasher.hash('123'),
+            email: 'admin@admin.com',
             role:'admin'
         },{
             username: 'user',
             password: await hasher.hash('123'),
+            email: 'user@user.com',
             role:'user'
         },{
             username: 'superadmin',
             password: await hasher.hash('123'),
+            email: 'superadmin@superadmin.com',
             role:'superadmin'
         }
         ];

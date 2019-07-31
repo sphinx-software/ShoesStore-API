@@ -1,11 +1,13 @@
-import { Model }      from "objection";
+import {Model}        from "@fusion.io/objection-binding";
 import { inject }     from "@fusion.io/framework";
 import { Hasher }     from "@fusion.io/framework/Contracts"
+import softDelete from "@fusion.io/objection-binding/abilities/softDelete";
+import hasTimestamps from "@fusion.io/objection-binding/abilities/hasTimestamps";
 
+@softDelete()
+@hasTimestamps()
 export default class Credential extends Model {
-    static get tableName() {
-        return "credentials";
-    }
+
 
     @inject(Hasher)
     async verify(password, hasher) {
