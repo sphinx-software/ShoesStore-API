@@ -4,6 +4,7 @@ import ProfileResource from "./ProfileResource";
 import ProfileCollection from "./ProfileCollection";
 import ProfileForm from "./ProfileForm";
 import ProfileRequired from "./ProfileRequired";
+import Credential from "../../Http/Auth/Credential";
 import LoginRequired from "../LoginRequired";
 
 @singleton()
@@ -12,8 +13,6 @@ export default class ProfileController {
     @middleware(ProfileRequired)
     @get('/profiles/:id')
     async detail(context) {
-        console.log("11111111");
-        console.log(context.profile);
         context.status = 201;
         return await context.render(ProfileResource, context.profile);
     }
@@ -27,6 +26,7 @@ export default class ProfileController {
             )
             .includeTrash()
             .join('credentials', 'profiles.credential_id', 'credentials.id')
+            .where('profiles.deletedAt', null)
         ;
         context.status = 201;
         return await context.render(ProfileCollection, profiles)
@@ -57,11 +57,9 @@ export default class ProfileController {
     async delete(context) {
         const profile = context.profile;
         await profile.$query().delete();
+        const credential = await Credential.query().findById(profile.credentialId);
+        await credential.$query().delete();
         return await context.render(ProfileResource, profile);
     }
-    @get('/test')
-    async test(context) {
-        const profile = await Profile.query().includeTrash();
-        context.body = profile;
-    }
+
 }

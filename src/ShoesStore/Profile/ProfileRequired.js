@@ -13,10 +13,10 @@ export default class ProfileRequired {
             )
             .includeTrash()
             .join('credentials', 'profiles.credential_id', 'credentials.id')
+            .where('profiles.deletedAt', null)
         ;
         console.log(context.params.id);
         if (!profile) {
-            console.log("aaaaaaaaaa00");
             context.status = 404;
             return await context.render(ResourceNotFound, {url: context.path});
         }

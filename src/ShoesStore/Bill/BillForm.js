@@ -12,8 +12,8 @@ import Form         from "../Form";
     address: 'required',
     phone: 'required'
 })
-export default class OrderForm extends Form {
+export default class BillForm extends Form {
     getName() {
-        return 'orderForm';
+        return 'billForm';
     }
 }

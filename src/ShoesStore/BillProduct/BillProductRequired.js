@@ -1,19 +1,19 @@
 import {singleton} from "@fusion.io/framework";
-import OrderProduct from "./OrderProduct";
+import BillProduct from "./BillProduct";
 import ResourceNotFound from "../ResourceNotFound";
 
 
 @singleton()
-export default class OrderProductRequired {
+export default class BillProductRequired {
 
     async handle(context, next) {
-        const orderProduct = await OrderProduct.query().findById(context.params.id);
+        const billProduct = await BillProduct.query().findById(context.params.id);
 
-        if (!orderProduct) {
+        if (!billProduct) {
             context.status = 404;
             return await context.render(ResourceNotFound, {url: context.path});
         }
-        context.orderProduct = orderProduct;
+        context.billProduct = billProduct ;
         await next();
     }
 }

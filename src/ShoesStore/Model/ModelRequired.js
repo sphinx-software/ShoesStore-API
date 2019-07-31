@@ -12,6 +12,8 @@ export default class ModelRequired {
             .includeTrash()
             .join('collections','models.collection_id','collections.id')
             .findById(context.params.id)
+            .where('models.deletedAt', null)
+
         ;
 
         if (!model) {

@@ -21,6 +21,8 @@ export default class ProductController {
             .includeTrash()
             .join('models', 'products.model_id', 'models.id' )
             .join('collections', 'models.collection_id', 'collections.id')
+            .where('products.deletedAt', null)
+
         ;
         context.status = 200;
         return await context.render(CollectionProductResource, products);
@@ -29,7 +31,6 @@ export default class ProductController {
     @middleware(ProductRequired)
     @get('/products/:id')
     async detail(context) {
-        console.log(context.product);
         return await context.render(ProductResource, context.product)
     }
 
@@ -50,12 +51,12 @@ export default class ProductController {
         return  await context.render(ProductResource, product);
     }
 
-    @middleware(ProductRequired)
+    // @middleware(ProductRequired)
     @del('/products/:id')
     async del(context) {
         const product = context.product;
         await product.$query().delete();
 
         return await context.render(ProductResource, product);
-    }
-}
+    }}
+
