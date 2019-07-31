@@ -57,6 +57,7 @@ export default class ProfileController {
     async delete(context) {
         const profile = context.profile;
         await profile.$query().delete();
+
         const credential = await Credential.query().findById(profile.credentialId);
         await credential.$query().delete();
         return await context.render(ProfileResource, profile);
