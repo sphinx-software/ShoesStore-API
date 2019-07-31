@@ -12,6 +12,10 @@ RUN mkdir /app
 
 COPY . /app
 
+COPY ./setup-database.sh /etc/rc.local/setup-database.sh
+
+RUN chmod 0777 /etc/rc.local/setup-database.sh
+
 WORKDIR /app
 
 RUN npm install -g @fusion.io/cli@1.5.1
@@ -31,4 +35,5 @@ RUN fusion framework config dump debug
 
 EXPOSE 3000
 
-CMD npm run prod
+ENTRYPOINT ["/etc/rc.local/setup-database.sh"]
+#CMD npm run prod

@@ -7,18 +7,19 @@ export default class ProfileRequired {
     async handle(context, next) {
 
         const profile = await Profile.query().findById(context.params.id)
-            .select('profiles.*', 'credentials.id',
+            .select('profiles.*',
                 'credentials.username', 'credentials.role',
                 'credentials.email', 'credentials.external_login'
             )
             .includeTrash()
             .join('credentials', 'profiles.credential_id', 'credentials.id')
+            .where('profiles.deletedAt', null)
         ;
+        console.log(context.params.id);
         if (!profile) {
             context.status = 404;
             return await context.render(ResourceNotFound, {url: context.path});
         }
-
         context.profile = profile;
         await next();
     }
