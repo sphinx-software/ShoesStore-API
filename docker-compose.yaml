@@ -1,0 +1,25 @@
+version: "3"
+services:
+  app:
+    build: .
+    environment:
+      - PORT=3000
+      - POSTGRES_USER=longlh
+      - POSTGRES_PASSWORD=1
+      - POSTGRES_DB=shoes_store
+      - POSTGRES_HOST=database
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    links:
+      - database
+  database:
+    image: "postgres"
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=longlh
+      - POSTGRES_PASSWORD=1
+      - POSTGRES_DB=shoes_store
