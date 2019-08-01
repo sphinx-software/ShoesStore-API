@@ -25,5 +25,17 @@ module.exports = {
             new winston.transports.File({ filename: path.resolve(__dirname + '/../../resources/storage/logs/fusion.log') }),
             new winston.transports.Console({ format: winston.format.cli(), level: 'debug' })
         ]
+    },
+    database: {
+        connections: {
+            shoesStore: {
+                connection: {
+                    host : 'localhost',
+                    user : 'your_user',
+                    password : 'your_password',
+                    database : 'your_database'
+                }
+            }
+        }
     }
 };
