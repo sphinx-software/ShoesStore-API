@@ -1,6 +1,6 @@
 import {ServiceProvider, QueueRegistry} from "@fusion.io/framework";
 import {IdentityPool} from "@fusion.io/passport-binding";
-import Credential from "./Http/Auth/Credential";
+import Credential from "./ShoesStore/Credential/Credential";
 import {inject}     from "@fusion.io/framework";
 import {Hasher}     from "@fusion.io/framework/Contracts"
 export default class AppServiceProvider extends ServiceProvider {

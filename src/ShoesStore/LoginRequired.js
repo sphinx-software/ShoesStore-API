@@ -1,4 +1,4 @@
-import Credential from "../Http/Auth/Credential";
+import Credential from "./Credential/Credential";
 import {singleton, inject} from "@fusion.io/framework";
 import {Authenticator} from "@fusion.io/passport-binding";
 

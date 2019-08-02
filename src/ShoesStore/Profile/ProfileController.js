@@ -4,7 +4,7 @@ import ProfileResource from "./ProfileResource";
 import ProfileCollection from "./ProfileCollection";
 import ProfileForm from "./ProfileForm";
 import ProfileRequired from "./ProfileRequired";
-import Credential from "../../Http/Auth/Credential";
+import Credential from "../Credential/Credential";
 import LoginRequired from "../LoginRequired";
 
 @singleton()

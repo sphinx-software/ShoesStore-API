@@ -2,7 +2,7 @@ import { Authenticator } from "@fusion.io/passport-binding";
 import {singleton, post } from "@fusion.io/framework";
 import { Hasher } from "@fusion.io/framework/Contracts"
 import hat from "hat";
-import Credential from "./Credential";
+import Credential from "../../ShoesStore/Credential/Credential";
 
 @singleton(Authenticator, Hasher)
 export default class LoginController {
