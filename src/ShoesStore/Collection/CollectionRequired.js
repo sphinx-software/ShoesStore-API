@@ -1,10 +1,10 @@
-import {singleton}      from '@fusion.io/framework';
+import {singleton}      from "@fusion.io/framework";
 import Collection       from "./Collection";
-import ResourceNotFound from "../ResourceNotFound";
+import ResourceNotFound from "../../Http/Middlewares/ResourceNotFound";
 
 @singleton()
 export default class CollectionRequired {
-    async handle(context, next) {
+    async handle (context, next) {
 
         const collection = await Collection.query().findById(context.params.id);
 

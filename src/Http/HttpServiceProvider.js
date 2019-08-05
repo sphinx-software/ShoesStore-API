@@ -1,23 +1,19 @@
 import {
     HttpServiceProvider as FrameworkProvider,
     ServeStatic,
-    StartSession,
     AccessLogger,
     RenderView,
-    RenderNunjuckView,
     RenderHalView
 } from "@fusion.io/framework";
 
-import HelloWorldController from "./Controllers/HelloWorldController";
-import WelcomeMesssage      from "../HAL/WelcomeMesssage";
-import ProductController    from "../ShoesStore/Product/ProductController";
-import ProfileController    from "../ShoesStore/Profile/ProfileController";
-import BillController      from "../ShoesStore/Bill/BillController";
-import CollectionController from "../ShoesStore/Collection/CollectionController"
-import KoaBody              from "koa-bodyparser";
-import LoginController      from "./Auth/LoginController";
-import ModelController      from "../ShoesStore/Model/ModelController";
-import cors                 from "@koa/cors";
+import ProductController     from "../ShoesStore/Product/ProductController";
+import ProfileController     from "../ShoesStore/Profile/ProfileController";
+import BillController        from "../ShoesStore/Bill/BillController";
+import CollectionController  from "./Controllers/CollectionController"
+import KoaBody               from "koa-bodyparser";
+import LoginController       from "./Auth/LoginController";
+import ModelController       from "../ShoesStore/Model/ModelController";
+import cors                  from "@koa/cors";
 import BillProductController from "../ShoesStore/BillProduct/BillProductController";
 
 /**
@@ -32,7 +28,7 @@ export default class HttpServiceProvider extends FrameworkProvider {
      *
      * @return {*[]}
      */
-    globalMiddlewares() {
+    globalMiddlewares () {
         return [
             cors({"Origin": "*"}),
             AccessLogger,
@@ -48,15 +44,13 @@ export default class HttpServiceProvider extends FrameworkProvider {
      *messages
      * @return {{api: Array, web: *[]}}
      */
-    middlewareGroups() {
+    middlewareGroups () {
         return {
             "api": [
                 RenderHalView
             ],
-
-            "web": [
-                StartSession,
-                RenderNunjuckView
+            "collections": [
+                RenderHalView
             ]
         }
     }
@@ -66,10 +60,13 @@ export default class HttpServiceProvider extends FrameworkProvider {
      *
      * @param router
      */
-    routing(router) {
+    routing (router) {
         router
-            .group({middleware: 'api', prefix: '/api/v1'}, router => this.apiRouting(router))
-            .group({middleware: 'web'}, router => this.webRouting(router))
+            .group({
+                middleware: "api",
+                prefix    : "/api/v1"
+            }, router => this.apiRouting(router))
+            .group({middleware: "collections"}, router => this.collectionsRouting(router))
         ;
     }
 
@@ -77,28 +74,24 @@ export default class HttpServiceProvider extends FrameworkProvider {
      *
      * @param router
      */
-    webRouting(router) {
+    apiRouting (router) {
         router
-            .controller(HelloWorldController)
-            .controller(LoginController)
-        ;
-    }
-
-    /**
-     *
-     * @param router
-     */
-    apiRouting(router) {
-        router
-            .get('messages.welcome', '/messages/:id', async ctx => {
-                await ctx.render(WelcomeMesssage, {message: 'Hello world', from: "Shoes store", id: ctx.params.id})
-            })
             .controller(ProductController)
             .controller(ProfileController)
             .controller(BillController)
             .controller(CollectionController)
             .controller(ModelController)
             .controller(BillProductController)
+        ;
+    }
+
+    /**
+     *
+     * @param router
+     */
+    collectionsRouting (router) {
+        router
+            .controller(CollectionController)
         ;
     }
 }

@@ -1,4 +1,4 @@
-import {Form as FusionForm} from "@fusion.io/framework"
+import {Form as FusionForm}    from "@fusion.io/framework"
 import ValidationErrorResource from "./ValidationErrorResource";
 
 export default class Form extends FusionForm {

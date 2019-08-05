@@ -1,21 +1,29 @@
-import {ServiceProvider} from "@fusion.io/framework";
-import {Validator} from "@fusion.io/framework/Contracts";
-import Profile from "./Profile/Profile";
+import {ServiceProvider}    from "@fusion.io/framework";
+import {
+    Validator,
+    Database
+}                           from "@fusion.io/framework/Contracts";
+import Profile              from "./Profile/Profile";
+import CollectionRepository from "./Collection/Repository"
 
 export default class ShoesStoreServiceProvider extends ServiceProvider {
-    register() {
+    register () {
+        const connection = (this.container.make(Database)).connection();
+        this.container.singleton("CollectionRepository", () => {
+            return new CollectionRepository(connection);
+        });
     }
 
-    boot() {
+    boot () {
         const validator = this.container.make(Validator);
 
         validator
             .register(
-                'profile.email.unique',
+                "profile.email.unique",
                 async email => !await Profile.query().where({email}).first()
             )
             .register(
-                'minlength',
+                "minlength",
                 async (value, min) => !(value.length <= min)
             )
         ;
