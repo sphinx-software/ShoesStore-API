@@ -22,12 +22,13 @@ RUN npm install -g @fusion.io/cli@1.5.1
 
 RUN npm install
 
+RUN npm run build
+
 RUN fusion --version
 
 RUN cp .fusionrc .fusionrc.bak
 
 RUN mv .product.fusionrc .fusionrc
-
 
 RUN fusion framework config dump env
 

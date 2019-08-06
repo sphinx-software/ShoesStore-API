@@ -8,9 +8,6 @@ services:
       - POSTGRES_PASSWORD=1
       - POSTGRES_DB=shoes_store
       - POSTGRES_HOST=database
-    volumes:
-      - .:/app
-      - /app/node_modules
     ports:
       - 3000:3000
     links:
