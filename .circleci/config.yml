@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
+            eb use Shoesstore-Webservice-env --profile eb-cli
             eb deploy Shoesstore-Webservice-env
 
 workflows:
