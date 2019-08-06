@@ -6,15 +6,11 @@ import {
     RenderHalView
 } from "@fusion.io/framework";
 
-import ProductController     from "../ShoesStore/Product/ProductController";
-import ProfileController     from "../ShoesStore/Profile/ProfileController";
-import BillController        from "../ShoesStore/Bill/BillController";
+
 import CollectionController  from "./Controllers/CollectionController"
 import KoaBody               from "koa-bodyparser";
 import LoginController       from "./Auth/LoginController";
-import ModelController       from "../ShoesStore/Model/ModelController";
 import cors                  from "@koa/cors";
-import BillProductController from "../ShoesStore/BillProduct/BillProductController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -76,12 +72,8 @@ export default class HttpServiceProvider extends FrameworkProvider {
      */
     apiRouting (router) {
         router
-            .controller(ProductController)
-            .controller(ProfileController)
-            .controller(BillController)
             .controller(CollectionController)
-            .controller(ModelController)
-            .controller(BillProductController)
+
         ;
     }
 

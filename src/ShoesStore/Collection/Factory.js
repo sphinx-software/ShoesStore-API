@@ -24,9 +24,9 @@ export default class Factory {
 
         const collection        = new Collection(raw.id, raw.parentId, raw.name, raw.slug);
         collection.relatedSlugs = raw.relatedSlugs;
-        collection.createdAt    = raw.created_at;
-        collection.updatedAt    = raw.updated_at;
-        collection.deletedAt    = raw.deleted_at;
+        collection.createdAt    = raw.createdAt;
+        collection.updatedAt    = raw.updatedAt;
+        collection.deletedAt    = raw.deletedAt;
 
         return collection.toJSON();
     }

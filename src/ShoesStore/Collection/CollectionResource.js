@@ -4,6 +4,6 @@ import {hal, HalTemplate} from "@fusion.io/framework";
 export default class CollectionResource extends HalTemplate {
 
     render(collection) {
-        this.state('data', collection.toJSON());
+        this.state('collection', collection);
     }
 }
