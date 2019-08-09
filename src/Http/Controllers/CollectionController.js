@@ -1,13 +1,5 @@
+import {container, get, middleware, singleton} from "@fusion.io/framework"
 import CollectionResource from "../../ShoesStore/Collection/CollectionResource"
-import {
-    get,
-    post,
-    singleton,
-    del,
-    middleware,
-    put,
-    container
-} from "@fusion.io/framework"
 import CollectionRequired from "./../Middlewares/Collection/CollectionRequired";
 
 @singleton()
@@ -20,7 +12,7 @@ export default class CollectionController {
     @get("/collections/:id")
     @middleware(CollectionRequired)
     async detail (context) {
-        // context.body = {"foobar": "foobar"};
+        // context.body = {"foobar": "foobar222"};
         return await context.render(CollectionResource, context.collection)
     }
 }

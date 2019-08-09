@@ -1,4 +1,10 @@
 {
+  "live": {
+    "spin": true,
+    "port": 3000,
+    "server": "src/server",
+    "excepts": "node_modules|resources"
+  },
   "bootstrap": "src/bootstrap",
   "console": "src/console",
   "commands": "src/commands",
