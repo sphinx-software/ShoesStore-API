@@ -8,15 +8,10 @@ const event = new EventEmitter();
 
 container.value(Event, event);
 
-runCliOutput(event);
+// runCliOutput(event);
 
 event.emit('fusion.server.starting');
 
-bootstrap(event).then(() => {
-    const kernel = container.make(HttpKernel);
-    const config = container.make(Config);
-
-    kernel.listen(config.get('http.port'), () => {
-        event.emit('fusion.server.started', config.get('http.port'));
-    });
+export default bootstrap(event).then(() => {
+    return container.make(HttpKernel);
 });

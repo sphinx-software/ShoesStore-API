@@ -1,4 +1,4 @@
-import {ServiceProvider, QueueRegistry} from "@fusion.io/framework";
+import {ServiceProvider} from "@fusion.io/framework";
 import {IdentityPool} from "@fusion.io/passport-binding";
 import Credential from "./Http/Auth/Credential";
 import {inject}     from "@fusion.io/framework";
