@@ -36,6 +36,33 @@ module.exports = {
      */
     debug: process.env.APP_DEBUG || false,
 
+    authenticate: {
+        default: 'api.token',
+        gateways: {
+            'api.token': {
+                protocol: 'token',
+                options: {
+                    privateKey: 'qwertyuiopasdfghjklzxcvbnm123456'
+                }
+            },
+            'facebook': {
+                protocol: 'oauth2',
+                options: {
+                    graphAPIVersion: '3.3',
+                    scope: 'email',
+                    clientId: '2352414428330995',
+                    clientSecret: '4a61ffdc02a291bfd8eb520e272dec3a',
+                    authorizePath: 'https://graph.facebook.com/oauth/authorize',
+                    tokenPath: 'https://graph.facebook.com/oauth/access_token',
+                    redirectUri: 'http://localhost:3000/oauth/facebook/callback'
+                }
+            }
+        }
+    },
+
+    /**
+     * @deprecated
+     */
     auth: {
         strategies: {
             local: {
@@ -276,6 +303,7 @@ module.exports = {
         './Http/HttpServiceProvider',
         './ErrorHandler/ErrorHandlerServiceProvider',
         './AppServiceProvider',
+        './Authentication/AuthenticationServiceProvider',
 
         "./ShoesStore/ShoesStoreServiceProvider"
     ]

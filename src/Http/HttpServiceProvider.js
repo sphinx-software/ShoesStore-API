@@ -1,15 +1,16 @@
 import {
-    HttpServiceProvider as FrameworkProvider,
-    ServeStatic,
     AccessLogger,
+    HttpServiceProvider as FrameworkProvider,
+    RenderHalView,
     RenderView,
-    RenderHalView
+    ServeStatic
 } from "@fusion.io/framework";
+import cors from "@koa/cors";
+import KoaBody from "koa-bodyparser";
+import authenticate from "../Authentication/authenticate";
 
-import CollectionController  from "./Controllers/CollectionController"
-import KoaBody               from "koa-bodyparser";
-import LoginController       from "./Auth/LoginController";
-import cors                  from "@koa/cors";
+import CollectionController from "./Controllers/CollectionController"
+import OAuthController from "./Controllers/OAuthController";
 
 /**
  * Our HttpServiceProvider, here we can specify how our Http layer works.
@@ -63,6 +64,17 @@ export default class HttpServiceProvider extends FrameworkProvider {
             }, router => this.apiRouting(router))
             .group({middleware: "collections"}, router => this.collectionsRouting(router))
         ;
+
+        router.group(
+            {
+                prefix: '/oauth'
+            }, (router) =>
+            {
+                router
+                    .get('/facebook', authenticate('facebook'))
+                    .controller(OAuthController)
+            }
+        )
     }
 
     /**
